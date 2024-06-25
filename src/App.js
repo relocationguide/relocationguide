@@ -30,6 +30,17 @@ function SearchComponent({ onSearch }) {
             type="text"
             value={searchTerm}
             onChange={handleSearchChange}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                e.preventDefault();
+              }
+            }}
+            onKeyUp={(e) => {
+              if (e.key === 'Enter') {
+                e.preventDefault();
+                handleSearchClick();
+              }
+            }}
           />
           <button class="btn btn-outline-success" onClick={handleSearchClick} type="button">Search</button>
         </form>
