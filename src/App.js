@@ -4,6 +4,34 @@ import TableRow from './TableRow';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+function SearchComponent({ onSearch }) {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handleSearchClick = () => {
+    onSearch(searchTerm);
+  };
+
+  return (
+    <nav class="navbar bg-body-tertiary">
+      <div class="container-fluid">
+        <form class="d-flex w-100" role="search">
+          <input
+            class="form-control me-2 w-80"
+            type="text"
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
+          <button class="btn btn-outline-success" onClick={handleSearchClick} type="button">Search</button>
+        </form>
+      </div>
+    </nav>
+  );
+}
+
 const App = () => {
   const [filter, setFilter] = useState('');
   const services = [
@@ -20,10 +48,7 @@ const App = () => {
 
   return (
     <div className="container">
-      <div className="form-group">
-        <label htmlFor="filter">Filter:</label>
-        <input type="text" className="form-control" id="filter" placeholder="Enter filter term" value={filter} onChange={e => setFilter(e.target.value)} />
-      </div>
+      <SearchComponent onSearch={setFilter} />
       <table className="table table-striped">
         <thead>
           <tr>
