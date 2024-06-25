@@ -1,5 +1,5 @@
 // CitySelect.js
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const parseCSV = (text) => {
     const lines = text.split('\n');
@@ -14,12 +14,6 @@ const parseCSV = (text) => {
   };
 
 function CitySelect({ onSelect }) {
-    const dropdownOptions = [
-        { value: 'paphos,limassol', label: 'All cyprus' },
-        { value: 'paphos', label: 'Paphos' },
-        { value: 'limassol', label: 'Limassol' },
-    ];
-
     const handleDropdownSelect = (selectedValue) => {
         const cities = selectedValue.split(',');
         const fetchPromises = cities.map(city => {
@@ -37,12 +31,18 @@ function CitySelect({ onSelect }) {
         .catch(error => console.error("Error fetching data:", error));
     };
 
+    const defaultCity = "limassol";
+    useEffect(() => {
+        handleDropdownSelect(defaultCity);
+    }, []);
+
+
 
     return (
-        <select class="form-select" onChange={(e) => handleDropdownSelect(e.target.value)}>
-        {dropdownOptions.map(option => (
-            <option key={option.value} value={option.value}>{option.label}</option>
-        ))}
+        <select class="form-select" defaultValue={defaultCity} onChange={(e) => handleDropdownSelect(e.target.value)}>
+            <option key="cyprus" value="paphos,limassol">All cyprus</option>
+            <option key="paphos" value="paphos">Paphos</option>
+            <option key="limassol" value="limassol">Limassol</option>
         </select>
     );
 }
