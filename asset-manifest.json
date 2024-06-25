@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/relocationguide/static/css/main.db62923b.css",
-    "main.js": "/relocationguide/static/js/main.687d2a4f.js",
+    "main.js": "/relocationguide/static/js/main.3ed0d0e5.js",
     "static/js/453.01d9aa1d.chunk.js": "/relocationguide/static/js/453.01d9aa1d.chunk.js",
     "static/media/recommended.png": "/relocationguide/static/media/recommended.5a175400cfd919ccf326.png",
     "static/media/notrecommended.png": "/relocationguide/static/media/notrecommended.789b3837aefb83a61e56.png",
     "static/media/mixed.png": "/relocationguide/static/media/mixed.984739bc95ab16f0674f.png",
     "index.html": "/relocationguide/index.html",
     "main.db62923b.css.map": "/relocationguide/static/css/main.db62923b.css.map",
-    "main.687d2a4f.js.map": "/relocationguide/static/js/main.687d2a4f.js.map",
+    "main.3ed0d0e5.js.map": "/relocationguide/static/js/main.3ed0d0e5.js.map",
     "453.01d9aa1d.chunk.js.map": "/relocationguide/static/js/453.01d9aa1d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.db62923b.css",
-    "static/js/main.687d2a4f.js"
+    "static/js/main.3ed0d0e5.js"
   ]
 }
