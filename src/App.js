@@ -5,14 +5,31 @@ import SearchComponent from './SearchComponent';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+const parseCSV = (text) => {
+  const lines = text.split('\n');
+  const fields = lines.shift().split(';');
+  return lines.map(line => {
+    const data = line.split(';');
+    return fields.reduce((obj, nextKey, index) => {
+      obj[nextKey] = data[index];
+      return obj;
+    }, {});
+  });
+};
+
+
 const App = () => {
   const [filter, setFilter] = useState([]);
-  const services = [
-    { name: 'Service 1', description: 'This is a description for Service 1', link: 'Link 1', tags: 'Tag1, Tag2', rating: 4.5 },
-    { name: 'Service 2', description: 'This is a description for Service 2', link: 'Link 2', tags: 'Tag3, Tag4', rating: 4.0 },
-    { name: 'Service 3', description: 'This is a description for Service 3', link: 'Link 3', tags: 'Tag5, Tag6', rating: 4.7 },
-    // Add more services as needed
-  ];
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    fetch('./data/paphos.csv')
+      .then(response => response.text())
+      .then(text => {
+        const parsedData = parseCSV(text);
+        setServices(parsedData);
+      });
+  }, []);
 
   const filteredServices = services.filter(service =>
     filter.length === 0 ||
