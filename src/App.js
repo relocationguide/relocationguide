@@ -13,7 +13,10 @@ const App = () => {
     // Add more services as needed
   ];
 
-  const filteredServices = services.filter(service => service.name.toLowerCase().includes(filter.toLowerCase()));
+  const filteredServices = services.filter(service =>
+    service.name.toLowerCase().includes(filter.toLowerCase()) ||
+    service.tags.split(', ').some(tag => tag.toLowerCase().includes(filter.toLowerCase()))
+);
 
   return (
     <div className="container">
