@@ -17,6 +17,16 @@ const parseCSV = (text) => {
   });
 };
 
+function Dropdown({ options, onSelect }) {
+  return (
+    <select class="form-select" onChange={(e) => onSelect(e.target.value)}>
+      {options.map(option => (
+        <option key={option.value} value={option.value}>{option.label}</option>
+      ))}
+    </select>
+  );
+}
+
 
 const App = () => {
   const [filter, setFilter] = useState([]);
@@ -40,9 +50,35 @@ const App = () => {
     )
 );
 
+  const handleDropdownSelect = (selectedValue) => {
+    const cities = selectedValue.split(',');
+    const fetchPromises = cities.map(city => {
+      const filePath = `./data/${city}.csv`;
+      return fetch(filePath)
+        .then(response => response.text())
+        .then(parseCSV);
+    });
+
+    Promise.all(fetchPromises)
+    .then(results => {
+      const data = [].concat(...results);
+      setServices(data);
+    })
+    .catch(error => console.error("Error fetching data:", error));
+  };
+
+  const dropdownOptions = [
+    { value: 'paphos,limassol', label: 'All cyprus' },
+    { value: 'paphos', label: 'Paphos' },
+    { value: 'limassol', label: 'Limassol' },
+  ];
+
   return (
     <div className="container">
-      <SearchComponent onSearch={setFilter} />
+      <div class="container-fluid">
+        <Dropdown options={dropdownOptions} onSelect={handleDropdownSelect} />
+        <SearchComponent onSearch={setFilter} />
+      </div>
       <table className="table table-striped">
         <thead>
           <tr>
