@@ -45,7 +45,7 @@ function SearchComponent({ onSearch }) {
           <button class="btn btn-outline-success" onClick={handleSearchClick} type="button">Search</button>
         </form>
       </div>
-      <div class="btn-group" id="tag-cloud">
+      <div class="btn-group mt-3" id="tag-cloud">
           {searchTerms.map((term, index) => (
             <button
               key={index} className="btn btn-info search-option"
