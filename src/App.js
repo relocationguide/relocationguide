@@ -1,19 +1,25 @@
 // App.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TableRow from './TableRow';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function SearchComponent({ onSearch }) {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerms, setSearchTerms] = useState([]);
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
   };
 
   const handleSearchClick = () => {
-    onSearch(searchTerm);
+    setSearchTerms(previousSearchTerms => [...previousSearchTerms, searchTerm]);
+    setSearchTerm("");
   };
+
+  useEffect(() => {
+    onSearch(searchTerms);
+  }, [searchTerms]);
 
   return (
     <nav class="navbar bg-body-tertiary">
@@ -28,12 +34,26 @@ function SearchComponent({ onSearch }) {
           <button class="btn btn-outline-success" onClick={handleSearchClick} type="button">Search</button>
         </form>
       </div>
+      <div class="btn-group" id="tag-cloud">
+          {searchTerms.map((term, index) => (
+            <button
+              key={index} className="btn btn-info search-option"
+              onClick={() => {
+                  setSearchTerms(searchTerms.filter((val, _) => val !== term ));
+                  onSearch(searchTerms);
+                }
+              }
+            >
+              {term}
+            </button>
+          ))}
+      </div>
     </nav>
   );
 }
 
 const App = () => {
-  const [filter, setFilter] = useState('');
+  const [filter, setFilter] = useState([]);
   const services = [
     { name: 'Service 1', description: 'This is a description for Service 1', link: 'Link 1', tags: 'Tag1, Tag2', rating: 4.5 },
     { name: 'Service 2', description: 'This is a description for Service 2', link: 'Link 2', tags: 'Tag3, Tag4', rating: 4.0 },
@@ -42,8 +62,12 @@ const App = () => {
   ];
 
   const filteredServices = services.filter(service =>
-    service.name.toLowerCase().includes(filter.toLowerCase()) ||
-    service.tags.split(', ').some(tag => tag.toLowerCase().includes(filter.toLowerCase()))
+    filter.length === 0 ||
+    filter.every(term => {
+      return service.name.toLowerCase().includes(term.toLowerCase()) ||
+      service.tags.split(', ').some(tag => tag.toLowerCase().includes(term.toLowerCase()))
+    }
+    )
 );
 
   return (
