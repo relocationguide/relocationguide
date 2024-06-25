@@ -86,7 +86,7 @@ const App = () => {
             <th>Description</th>
             <th>Links</th>
             <th>Related Tags</th>
-            <th>Rating</th>
+            <th>Recommended</th>
           </tr>
         </thead>
         <tbody>
