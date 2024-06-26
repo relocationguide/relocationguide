@@ -1,5 +1,9 @@
 name: Inject Data about new service
 
+on:
+  repository_dispatch:
+    types: [test_result]
+
 jobs:
   createPullRequest:
     runs-on: ubuntu-latest
