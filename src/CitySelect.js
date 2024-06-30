@@ -1,26 +1,16 @@
 // CitySelect.js
 import React, { useEffect } from 'react';
 
-const parseCSV = (text) => {
-    const lines = text.split('\n');
-    const fields = lines.shift().split(';');
-    return lines.map(line => {
-      const data = line.split(';');
-      return fields.reduce((obj, nextKey, index) => {
-        obj[nextKey] = data[index];
-        return obj;
-      }, {});
-    });
-  };
+const parseJSON = (text) => JSON.parse(text);
 
 function CitySelect({ onSelect }) {
     const handleDropdownSelect = (selectedValue) => {
         const cities = selectedValue.split(',');
         const fetchPromises = cities.map(city => {
-          const filePath = `./data/${city}.csv`;
+          const filePath = `./data/${city}.json`;
           return fetch(filePath)
             .then(response => response.text())
-            .then(parseCSV);
+            .then(parseJSON);
         });
 
         Promise.all(fetchPromises)

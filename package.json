@@ -1,7 +1,6 @@
 {
-  "name": "cyprus_service_guide_react",
+  "name": "relocationguide",
   "version": "0.1.0",
-  "homepage": "https://sandakovmm.github.com/relocationguide",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
@@ -40,6 +39,7 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.1.1"
+    "gh-pages": "^6.1.1",
+    "octokit": "^4.0.2"
   }
 }

@@ -17,7 +17,7 @@ const App = () => {
       service.tags.split(', ').some(tag => tag.toLowerCase().includes(term.toLowerCase()))
     }
     )
-);
+  );
 
   return (
     <div className="container">

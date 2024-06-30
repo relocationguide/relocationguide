@@ -1,0 +1,38 @@
+[
+    {
+      "name": "Service 4",
+      "description": "This is a description for Service 4",
+      "links": [
+        {
+          "name": "Link 1",
+          "url": "https://www.example.com/link1"
+        }
+      ],
+      "tags": ["Tag1", "Tag5"],
+      "rating": 5.0
+    },
+    {
+      "name": "Service 5",
+      "description": "This is a description for Service 5",
+      "links": [
+        {
+          "name": "Link 2",
+          "url": "https://www.example.com/link2"
+        }
+      ],
+      "tags": ["Tag2", "Tag4"],
+      "rating": 1.5
+    },
+    {
+      "name": "Service 6",
+      "description": "This is a description for Service 6",
+      "links": [
+        {
+          "name": "Link 3",
+          "url": "https://www.example.com/link3"
+        }
+      ],
+      "tags": ["Tag3", "Tag6"],
+      "rating": 3.7
+    }
+  ]
