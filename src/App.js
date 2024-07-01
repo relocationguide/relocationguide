@@ -52,8 +52,6 @@ const App = () => {
     // Octokit.js
     // https://github.com/octokit/core.js#readme
     await octokit.request('POST /repos/relocationguide/relocationguide/dispatches', {
-      owner: 'relocationguide',
-      repo: 'relocationguide',
       event_type: 'add_service_request',
       client_payload: serviceData,
       headers: {
