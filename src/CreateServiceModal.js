@@ -31,10 +31,8 @@ const CreateServiceModal = ({ show, onClose, onConfirm }) => {
   };
 
   const handleTagChange = (index, tag) => {
-    console.log("Goint to change tag", index, tag)
     const newLinks = [...tags];
     newLinks[index] = tag;
-    console.log("Result tag:", tags)
     setTags(newLinks);
   }
 
