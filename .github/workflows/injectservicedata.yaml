@@ -24,7 +24,7 @@ jobs:
 
       - name: Extract JSON Data and Update paphos.json
         run: |
-          cat ${{ inputs.name }} > data.json
+          cat ${{ github.event.inputs.name }} > data.json
         shell: bash
 
       - name: Create Pull Request
@@ -52,5 +52,4 @@ jobs:
           reviewers: relocationguideguru
           team-reviewers: |
             SandakovMM
-          milestone: 1
           draft: false
