@@ -3,6 +3,18 @@ name: Inject Data about new service
 on:
   repository_dispatch:
     types: [add_service_request]
+    inputs:
+      name:
+        description: 'Service name'
+        required: true
+        type: string
+      description:
+        description: 'Service description'
+        required: true
+        type: string
+      rating:
+        description: 'Service rating'
+        type: float
 
 jobs:
   createPullRequest:
@@ -12,7 +24,7 @@ jobs:
 
       - name: Extract JSON Data and Update paphos.json
         run: |
-          cat ${{ inputs }} > data.json
+          cat ${{ inputs.name }} > data.json
         shell: bash
 
       - name: Create Pull Request
