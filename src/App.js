@@ -12,7 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const octokit = new Octokit({
   // Oh nooo! Someone leaked the GitHub PAT! 😱
-  auth: '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'
+  auth: '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'
 })
 
 const App = () => {
