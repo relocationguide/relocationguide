@@ -12,7 +12,7 @@ jobs:
 
       - name: Extract JSON Data and Update paphos.json
         run: |
-          cat ${{ github.event.inputs }} > data.json
+          cat ${{ inputs }} > data.json
         shell: bash
 
       - name: Create Pull Request
