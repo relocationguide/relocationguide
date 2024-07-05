@@ -12,6 +12,13 @@ on:
       links:
         description: 'Service links'
         type: Array<Object>
+        items:
+          type: object
+          properties:
+            name:
+              type: string
+            url:
+              type: string
       tags:
         description: 'Service tags'
         type: Array<string>
