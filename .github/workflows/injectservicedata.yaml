@@ -12,7 +12,7 @@ jobs:
 
       - name: Extract JSON Data and Update paphos.json
         run: |
-          jq --argjson data '${{ github.event.inputs }}' '. += [$data]' paphos.json > temp.json && mv temp.json paphos.json
+          cat ${{ github.event.inputs.data }} > data.json
         shell: bash
 
       - name: Create Pull Request
