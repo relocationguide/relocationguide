@@ -21,7 +21,7 @@ jobs:
 
       - name: Extract JSON Data and Update paphos.json
         run: |
-          cat "${{ inputs }}" > data.json
+          echo "${{ inputs }}" > data.json
         shell: bash
 
       - name: Create Pull Request
