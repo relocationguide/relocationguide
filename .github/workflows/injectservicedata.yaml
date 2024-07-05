@@ -2,15 +2,12 @@ name: Inject Data about new service
 
 on:
   workflow_dispatch:
-    types: [add_service_request]
     inputs:
       name:
         description: 'Service name'
-        required: true
         type: string
       description:
         description: 'Service description'
-        required: true
         type: string
       rating:
         description: 'Service rating'
