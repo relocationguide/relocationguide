@@ -9,6 +9,12 @@ on:
       description:
         description: 'Service description'
         type: string
+      links:
+        description: 'Service links'
+        type: Array<Object>
+      tags:
+        description: 'Service tags'
+        type: Array<string>
       rating:
         description: 'Service rating'
         type: float
