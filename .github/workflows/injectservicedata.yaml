@@ -34,7 +34,7 @@ jobs:
 
       - name: Extract JSON Data and Update paphos.json
         run: |
-          jq --argjson data '${{ toJSON(inputs) }}' '. += [$data]' paphos.json > temp.json && mv temp.json paphos.json
+          jq --argjson data '${{ toJSON(inputs) }}' '. += [$data]' public/data/paphos.json > temp.json && mv temp.json public/data/paphos.json
         shell: bash
 
       - name: Create Pull Request
